@@ -24,12 +24,8 @@ np.random.seed(1)
 # Create some random data
 x_data = np.atleast_2d(np.linspace(-1, 1, 101)).T
 xdata = x_data.reshape(101, 1)
-y_data = 12 * x_data + 6 + np.random.randn(*x_data.shape) * 0.33
+y_data = 12 * x_data + 6 + np.random.randn(*x_data.shape) * 1.33
 
-# Plot the data
-fiq = plt.figure()
-plt.scatter(x_data, y_data)
-plt.show()
 
 W = tf.Variable(tf.random_uniform([1, 1], -1.0, 1.0))
 b = tf.Variable(tf.zeros([1]))
@@ -68,6 +64,23 @@ for step in range(n):
     params[:,step] = np.array([W_, 
                               b_,
                               loss_val])
+
+# Plot the best fit line 
+x_start = -1.0
+# use .item() to convert from a tensor to a plain float/integer  	
+# the [0] since np.multiply retuens an array data type
+y_start = (np.multiply(W_.item(), x_start) + b_)[0]  	
+x_end = 1.0
+y_end = (np.multiply(W_.item(), x_end) + b_)[0] 	
+x_start_end = np.array([x_start, x_end])
+y_start_end = np.array([y_start, y_end])
+
+
+# Plot the data
+fiq = plt.figure()
+plt.scatter(x_data, y_data)
+plt.plot(x_start_end, y_start_end, 'r-')
+plt.show()
 
 param_titles = ['Weight ($W$)', 'Bias ($b$)', 'Loss ($MSE$)']
 plt.figure(figsize=(15,10))
