@@ -89,13 +89,14 @@ sess.run(tf.global_variables_initializer())
 
 # Train the model
 
-for i in range(300):   #trakn the model for 1000 iterations
-	# for every interation all the data is passed to the cost & Gradient descent algo
-        # Here stachastic gradient descent is being used since only one data is being 
-	# passed one at a time. If data was passed in one batch i.e., 
-	# feed_dict={X1:data_x1, X2:data_x2, Y:data_y} it would be batch gradient descent 
+for i in range(300):   
+	# If only one data at a time is passed to Gradient descent (and cost), it is 
+	# stochastic gradient descent i.e., feed_dict={X1:x1, X2:x2, Y:y} 
+	# If full data is passed to Gradient descent(and cost) in one go
+        # it is batch gradient descent.
+	# i.e., feed_dict={X1:data_x1, X2:data_x2, Y:data_y}	
  	for x1, x2, y in zip(data_x1, data_x2, data_y):
-  		_,loss_v, summary = sess.run([train_op, loss, merged_summaries], feed_dict={X1:x1, X2:x2, Y:y})
+  		_,loss_v, summary = sess.run([train_op, loss, merged_summaries], feed_dict={X1:data_x1, X2:data_x2, Y:data_y})
   	
 	cost_history=np.append(cost_history, loss_v)
   	if i%20 == 0:
