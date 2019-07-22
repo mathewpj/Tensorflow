@@ -1,6 +1,6 @@
 # Tensorflow
-Repo contains Tensorflow projects
-Directory
-==========
-Summary           - Contains code to demonstrate summaries for visualizing data
-LinearRegression  - Contains single variable and Multivariate Linear regession 
+##### Repo contains Tensorflow projects
+
+
+##### Summary           - *Code to demonstrate summaries for data visualization*
+##### LinearRegression  - *Contains single variable & Multivariate Linear regession* 
