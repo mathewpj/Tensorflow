@@ -88,9 +88,11 @@ W = tf.Variable(tf.random_normal([3, 1]), name='weight')
 # of also N X 1  
 hypothesis = tf.sigmoid(tf.matmul(X, W))
 
-# Cost Function of the form
-# Y * tf.log(hypothesis) + (1- Y)*tf.log(1 - hypothesis) is also called the 
-# Binary Cross Entropy
+# Cost Function
+# Using mean squared error from linear regression isn’t a good idea here, 
+# as the resulting cost function isn’t convex and so is not well-suited 
+# for gradient descent. Y * tf.log(hypothesis) + (1- Y)*tf.log(1 - hypothesis) 
+# is also called the Binary Cross Entropy  
 cost = -tf.reduce_mean(Y * tf.log(hypothesis) + (1- Y)*tf.log(1 - hypothesis))
 
 # Initialize the Step Size 
