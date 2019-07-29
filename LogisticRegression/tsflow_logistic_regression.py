@@ -1,3 +1,5 @@
+# Author : mathew.p.joseph@gmail.com
+
 # Import dependencies
 import csv
 import numpy as np
@@ -9,7 +11,7 @@ from sklearn.model_selection import train_test_split
 # Get data from the csv file
 data = np.genfromtxt('./ex2data1.csv', delimiter=',')
 
-#Get the 2 features (hours slept & hours studied)
+# Get the 2 features (hours slept & hours studied)
 X_frm_csv = data[:, 0:2]
 # Get the result (0 suspended - 1 approved)
 Y_frm_csv = data[:, 2]
@@ -49,7 +51,7 @@ plt.legend(['Approved', 'Suspended'])
 plt.show()
 '''
 
-# the incomming data should be of the form X_0, X_1, X_2
+# Incomming data should be of the form X_0, X_1, X_2
 # so append a column of ones i.e., X_0 = 1
   
 column_of_ones = np.ones((80, 1))
@@ -80,6 +82,10 @@ W = tf.Variable(tf.random_normal([3, 1]), name='weight')
 # => y = mx + c  	  
 
 # Hypothesis
+# Since X = [N X 3] and W = [3 X 1],
+# tf.matmul o/p is a column vector of N X 1
+# Hence the  o/p of tf.sigmoid () is a column 
+# of also N X 1  
 hypothesis = tf.sigmoid(tf.matmul(X, W))
 
 # Cost Function of the form
@@ -98,7 +104,10 @@ n = 3000
 # Gradient Descent Algorithm
 cost_val = []   
 
+# A bit of tensorflow magic to calculate the accuracy of prediction
 z = tf.sigmoid(tf.matmul(x_test, tf.cast(W, tf.float64)))
+predicted = tf.cast(z  > 0.5, tf.float32)
+accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, y_test), tf.float32))
 
 init = tf.global_variables_initializer()
 sess = tf.Session() 
@@ -158,8 +167,7 @@ plt.show()
 plt.plot(cost_val)
 plt.show()
 
-# A bit of tensorflow magic to calculate the accuracy of prediction
-predicted = tf.cast(sess.run(z)  > 0.5, tf.float32)
-print(sess.run(tf.reduce_mean(tf.cast(tf.equal(predicted, y_test), tf.float32))))
+# Evaluate the prediction accuracy
+print(sess.run(accuracy))
 
 sess.close()
