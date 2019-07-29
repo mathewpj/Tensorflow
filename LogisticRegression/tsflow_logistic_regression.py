@@ -105,9 +105,9 @@ n = 3000
 cost_val = []   
 
 # A bit of tensorflow magic to calculate the accuracy of prediction
-z = tf.sigmoid(tf.matmul(x_test, tf.cast(W, tf.float64)))
+z = tf.sigmoid(tf.matmul(X, W))
 predicted = tf.cast(z  > 0.5, tf.float32)
-accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, y_test), tf.float32))
+accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, Y), tf.float32))
 
 init = tf.global_variables_initializer()
 sess = tf.Session() 
@@ -168,6 +168,9 @@ plt.plot(cost_val)
 plt.show()
 
 # Evaluate the prediction accuracy
-print(sess.run(accuracy))
+# the bit of magix is that you provide X: x_test, Y: y_test 
+# and TF knows it needs to pass x_test to z and y_test to 
+# to accuracy 
+print(sess.run(accuracy, feed_dict = {X: x_test, Y: y_test}))
 
 sess.close()
