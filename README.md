@@ -4,4 +4,6 @@
 
 ##### Summary           - *Code to demonstrate summaries for data visualization*
 ##### LinearRegression  - *Contains single variable & Multivariate Linear regession* 
-##### LogisticRegression  - *Contains binary Logistic regession* 
+##### LogisticRegression  - *Contains Logistic regession* 
+                            - Binary Logistic Regression
+                            - Multinominal Logistic Regression
