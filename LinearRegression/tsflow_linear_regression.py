@@ -37,6 +37,15 @@ n = 100 # number of iterations
 alpha = 0.01 # learning rate
 loss = tf.reduce_mean(tf.square(y - y_hat))
 
+# Setting up the Optimizer
+ 
+# The monolithic optimizer.minimize(loss) can be split into  
+# more intutive compute_gradients & apply_gradients steps 
+# i.e., the steps below
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate=alpha)
+# grads = optimizer.compute_gradients(loss, [W, b])
+# train = optimizer.apply_gradients(grads)
+
 optimizer = tf.train.GradientDescentOptimizer(learning_rate=alpha)
 train = optimizer.minimize(loss)
 
