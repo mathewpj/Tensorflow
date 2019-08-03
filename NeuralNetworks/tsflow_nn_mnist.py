@@ -1,4 +1,6 @@
-import tensorflow as tf
+#	Author : mathew.p.joseph@gmail.com
+
+#import tensorflow as tf
 import math
 from tensorflow.examples.tutorials.mnist import input_data
 
