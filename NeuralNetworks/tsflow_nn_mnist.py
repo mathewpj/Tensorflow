@@ -1,6 +1,6 @@
 #	Author : mathew.p.joseph@gmail.com
 
-#import tensorflow as tf
+import tensorflow as tf
 import math
 from tensorflow.examples.tutorials.mnist import input_data
 
@@ -51,7 +51,6 @@ def model_neural_network(data):
         l3 = tf.nn.relu(l3)
 
         output = tf.matmul(l3, output_layer_weights)
-
         return(output)
 
 x = tf.placeholder('float', [None, flatenned_input_data_size]) # Enforce the shape of the input)
