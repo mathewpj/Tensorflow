@@ -49,7 +49,11 @@ def model_neural_network(data):
 
         l3 = tf.add(tf.matmul(l2, hidden_3_layer_weights), hidden_3_layer_biases)
         l3 = tf.nn.relu(l3)
-
+	
+	# The Activation function, in this case relu is added to the o/p of the hidden
+	# layers only (not for the output layer. Technicaly speaking the output of the 
+	# "output" layer should be passed thru softmax function. However doing so here
+	# seem to make the accuracy go haywire
         output = tf.matmul(l3, output_layer_weights)
         return(output)
 
