@@ -8,3 +8,4 @@
                             - Binary Logistic Regression
                             - Multinominal Logistic Regression
 ##### NeuralNetworks    - *Contains example code for deep Neural Nets* 
+##### Support Vector Machines(SVMs)    - *Contains example code for SVMs* 
