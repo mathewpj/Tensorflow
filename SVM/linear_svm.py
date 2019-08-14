@@ -56,6 +56,11 @@ hypothesis = tf.subtract(tf.matmul(x_data, A), b)
 
 # Cost Function
 # 1/n*SUM(max(0, 1 - y*(Ax - b))) + alpha*MOD(A)^2
+# This formulation of Cost function is termed "soft margin loss/SVM" function.
+# (as opposed to a "hard margin SVM". A hard margin SVM cannot work when the data 
+# is not linearly seperable. This is where the soft margin SVM helps. By controlling 
+# alpha you control the degree to which the hyperplane "accomodates" outliers
+
 
 alpha = tf.constant([0.01])
 # y*(Ax - b)
