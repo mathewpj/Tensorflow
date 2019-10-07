@@ -61,9 +61,11 @@ hypothesis = tf.subtract(tf.matmul(x_data, A), b)
 # is not linearly seperable. This is where the soft margin SVM helps. By controlling 
 # Alpha you control the degree to which the hyperplane "accomodates" outliers.
 
-# The alpha*MOD(A)^2 is the Regularization term. I'd wager that if the data is linearly 
-# seperable then the Alpha can be made zero and the classifier will still work 
-# perfectly (orignally was set ot 0.01 below)
+# The alpha*MOD(A)^2 is the Regularization term. Sometimes we want to use the 
+# hard margin—after all, that is why we add the parameter alpha, which will 
+# help us to determine how important the regularization term is. I'd wager that 
+# if the data is linearly seperable then the alpha can be made zero and the 
+# classifier will still work perfectly (orignally was set to 0.01 below). 
 
 alpha = tf.constant([0.0])
 # y*(Ax - b)
