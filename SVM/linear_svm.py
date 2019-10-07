@@ -1,5 +1,5 @@
 # Author mathew.p.joseph@gmail.com
-# reworked the  example from Tensor Flow Cookbook
+# Reworked the  example from Tensor Flow Cookbook
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -59,10 +59,13 @@ hypothesis = tf.subtract(tf.matmul(x_data, A), b)
 # This formulation of Cost function is termed "soft margin loss/SVM" function.
 # (as opposed to a "hard margin SVM". A hard margin SVM cannot work when the data 
 # is not linearly seperable. This is where the soft margin SVM helps. By controlling 
-# alpha you control the degree to which the hyperplane "accomodates" outliers
+# Alpha you control the degree to which the hyperplane "accomodates" outliers.
 
+# The alpha*MOD(A)^2 is the Regularization term. I'd wager that if the data is linearly 
+# seperable then the Alpha can be made zero and the classifier will still work 
+# perfectly (orignally was set ot 0.01 below)
 
-alpha = tf.constant([0.01])
+alpha = tf.constant([0.0])
 # y*(Ax - b)
 term1 = tf.multiply(hypothesis, y_target)
 # 1 - y*(Ax - b)
